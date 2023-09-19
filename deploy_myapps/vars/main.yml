@@ -1,0 +1,6 @@
+---
+# vars file for deploy_myapps
+php_image: php
+mysql_image: mysql
+nginx_image: nginx
+service_dir: "/opt"

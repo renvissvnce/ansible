@@ -1,0 +1,35 @@
+version: '3.5'
+
+services:
+  php:
+    container_name: php-webapp
+    image: "{{ php_image }}"
+    entrypoint: ['sleep', '5000']
+    ports:
+      - 8428:8428
+
+  mysql:
+    container_name: mysqldb
+    restart: always
+    image: "{{ mysql_image }}"
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      POSTGRES_PASSWORD: 'password'
+    ports:
+      - 3306:3306 # <Port exposed> : <MySQL Port running inside container>
+    expose:
+      - 3306 # Opens port 3306 on the container
+    
+
+  nginx:
+    container_name: nginx
+    restart: always
+    image: "{{ nginx_image}}"
+    user: root
+    volumes:
+      - /etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 8080:80
+    expose:
+      - 8080

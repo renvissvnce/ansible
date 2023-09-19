@@ -1,0 +1,9 @@
+---
+all:
+  hosts:
+    myhost: 
+      ansible_host: # attach here hostname
+      ansible_user: # attach here username
+      ansible_ssh_extra_args: '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+      ansible_python_interpreter: /usr/bin/python3
+      ansible_ssh_private_key_file: ~/.ssh/id_rsa # attach here private key
